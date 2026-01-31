@@ -1,7 +1,8 @@
 using PRAKTIKA_V1.Components;
+using PraktikaApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddScoped<ProductService>();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();

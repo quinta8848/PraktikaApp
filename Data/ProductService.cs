@@ -1,5 +1,5 @@
 using Microsoft.Data.Sqlite;
-using PraktikaApp.Models; // Подключаем наши модели
+using PraktikaApp.Models; 
 using System.Collections.Generic;
 
 namespace PraktikaApp.Data
@@ -22,8 +22,7 @@ namespace PraktikaApp.Data
 
                     // 2. Создаем команду
                     var command = connection.CreateCommand();
-                    command.CommandText = "SELECT Id, Name, Price, Stock, Description FROM Products
-
+                    command.CommandText = "SELECT Id, Name, Price, Stock, Description FROM Products";
                     // 3. Выполняем команду и получаем "читатель" (Reader)
                     using (var reader = command.ExecuteReader())
                     {
