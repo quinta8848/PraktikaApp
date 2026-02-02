@@ -1,0 +1,52 @@
+@page "/orders"
+@using PraktikaApp.Models
+@using PraktikaApp.Data
+@inject OrderService Service
+
+<PageTitle>Заказы</PageTitle>
+
+<h1>📋 Управление заказами</h1>
+
+<p>Здесь отображаются все заказы из базы данных.</p>
+
+@if (orders == null)
+{
+    <p><em>Загрузка данных...</em></p>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Клиент</th>
+                <th>Телефон</th>
+                <th>Дата заказа</th>
+                <th>Сумма</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in orders)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td><strong>@item.CustomerName</strong></td>
+                    <td>@item.CustomerPhone</td>
+                    <td>@item.OrderDate</td>
+                    <td>@item.TotalAmount</td>
+                    <td>@item.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Order> orders;
+
+    protected override void OnInitialized()
+    {
+        orders = Service.GetAllOrders();
+    }
+}

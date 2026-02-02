@@ -3,6 +3,7 @@ using PraktikaApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<OrderService>();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
